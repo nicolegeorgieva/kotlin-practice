@@ -9,4 +9,19 @@ fun main(args: Array<String>) {
     } else {
         println("You didn't write a valid number.")
     }
+
+    println("Enter your birth year")
+    calculateAge(2023)
+}
+
+fun calculateAge(currentYear: Int) {
+    val birthYear = readlnOrNull() ?: ""
+    val birthYearNumberInput = birthYear.toIntOrNull()
+
+    if (birthYearNumberInput != null) {
+        println("Your age is ${currentYear - birthYearNumberInput}")
+    } else {
+        println("You didn't enter a valid birth year")
+    }
+
 }
