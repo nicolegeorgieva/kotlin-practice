@@ -1,6 +1,12 @@
 fun main(args: Array<String>) {
     println("Write a number")
 
-    val numberInput = readLine() ?: ""
-    println("Double is: ${numberInput.toInt() * 2}")
+    val userInput = readlnOrNull() ?: ""
+    val numberInput = userInput.toDoubleOrNull()
+
+    if (numberInput != null) {
+        println("Double is: ${numberInput * 2}")
+    } else {
+        println("You didn't write a valid number.")
+    }
 }
