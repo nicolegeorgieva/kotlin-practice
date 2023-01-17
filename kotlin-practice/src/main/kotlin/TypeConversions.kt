@@ -11,7 +11,7 @@ fun main() {
     val userInputToDouble = userInput?.toDoubleOrNull()
 
     if (userInputToDouble != null) {
-        println("$userInput is of type ${userInputToDouble::class.java}")
+        println("${userInputToDouble * pi} is of type ${userInputToDouble::class.java}")
     } else {
         println("Invalid type")
     }
