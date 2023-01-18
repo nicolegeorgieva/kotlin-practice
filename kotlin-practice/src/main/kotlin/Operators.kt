@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
 
     val result = readlnOrNull()?.toDoubleOrNull()?.times(3)?.let { result ->
         val formatted = DecimalFormat("###,###.##").format(result)
-        "The result is ${formatted}"
+        "The result is $formatted"
     } ?: "Invalid amount"
 
     println(result)
