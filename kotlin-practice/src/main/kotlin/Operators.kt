@@ -5,7 +5,8 @@ fun main(args: Array<String>) {
     val contestPrize = userBankAccountAmount?.toDoubleOrNull()
 
     if (contestPrize != null) {
-        println("You have a total of ${contestPrize * 3}.")
+        val reward = contestPrize * 3
+        println("You have a total of ${reward}.")
     } else {
         println("Invalid amount.")
     }
