@@ -3,6 +3,6 @@ fun main() {
     try {
         println(test?.toInt())
     } catch (e: Exception) {
-        println("An exception happened.")
+        println("An exception happened \n ${e.localizedMessage}")
     }
 }
