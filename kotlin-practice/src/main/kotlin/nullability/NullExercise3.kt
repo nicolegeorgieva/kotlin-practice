@@ -1,4 +1,4 @@
-package nullExercise
+package nullability
 
 fun main() {
     println("Please insert a number")

@@ -1,4 +1,4 @@
-package nullExercise
+package nullability
 
 fun main() {
     val demo: Double? = 13.94
