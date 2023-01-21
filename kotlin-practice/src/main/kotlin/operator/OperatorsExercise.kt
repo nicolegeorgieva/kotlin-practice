@@ -1,3 +1,5 @@
+package operator
+
 fun main() {
     println("Write the interest for your bank account.")
 

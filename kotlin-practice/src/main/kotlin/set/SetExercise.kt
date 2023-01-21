@@ -1,3 +1,5 @@
+package set
+
 fun main() {
     val colors = hashSetOf<String>()
 

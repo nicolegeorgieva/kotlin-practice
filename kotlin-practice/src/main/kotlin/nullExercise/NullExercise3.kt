@@ -1,3 +1,5 @@
+package nullExercise
+
 fun main() {
     println("Please insert a number")
     val number = readlnOrNull()

@@ -1,3 +1,5 @@
+package input
+
 fun main(args: Array<String>) {
     println("Write a number")
 

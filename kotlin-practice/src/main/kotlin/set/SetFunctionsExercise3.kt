@@ -1,3 +1,5 @@
+package set
+
 fun main() {
     var acceptedColors = hashSetOf("white", "black", "grey")
     val myColors = setOf("blue", "red", "black", "green")

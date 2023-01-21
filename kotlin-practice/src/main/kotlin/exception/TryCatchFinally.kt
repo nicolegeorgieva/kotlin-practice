@@ -1,3 +1,5 @@
+package exception
+
 fun main() {
     try {
         println("What product would you like to buy?")

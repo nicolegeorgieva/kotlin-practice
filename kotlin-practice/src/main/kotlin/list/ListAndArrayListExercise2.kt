@@ -1,3 +1,5 @@
+package list
+
 fun main() {
     val customers = arrayListOf("Nicole", "Iliyan")
     val newCustomer = "Morgana"

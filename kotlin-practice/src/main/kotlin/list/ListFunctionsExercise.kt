@@ -1,3 +1,5 @@
+package list
+
 fun main() {
     val neededColors = listOf("red", "green", "blue")
     val availableColors = listOf("red", "blue")

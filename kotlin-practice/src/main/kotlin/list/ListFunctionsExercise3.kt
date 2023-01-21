@@ -1,3 +1,5 @@
+package list
+
 fun main() {
     val animals = arrayListOf("lion", "zebra", "chimp", "elephant")
 

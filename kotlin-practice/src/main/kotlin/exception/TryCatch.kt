@@ -1,3 +1,5 @@
+package exception
+
 fun main() {
     val test = readln()
     try {

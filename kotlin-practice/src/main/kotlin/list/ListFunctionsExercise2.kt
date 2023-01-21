@@ -1,3 +1,5 @@
+package list
+
 fun main() {
     val recipeIngredients = arrayListOf("chicken", "egg", "mozzarella", "pepper")
 
