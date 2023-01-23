@@ -5,16 +5,18 @@ fun main() {
     val input = readlnOrNull()
     val hour = input?.toIntOrNull()
 
-    if (hour == null || hour > 24) {
+    if (hour == null || hour > 24 || hour < 0) {
         println("Invalid input")
         return
     }
 
-    when (hour) {
-        in 6..11 -> println("It's morning.")
-        in 12..14 -> println("It's noon.")
-        in 15..17 -> println("It's afternoon.")
-        in 18..21 -> println("It's evening.")
-        else -> println("It's night.")
+    val timeOfDay = when (hour) {
+        in 6..11 -> "morning"
+        in 12..14 -> "noon"
+        in 15..17 -> "afternoon"
+        in 18..21 -> "evening"
+        else -> "night"
     }
+
+    println("$hour:00 is in the $timeOfDay.")
 }
