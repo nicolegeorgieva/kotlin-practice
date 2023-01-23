@@ -10,5 +10,8 @@ fun main() {
         return
     }
 
-    if (guest in guestList) println("Hi, $guest, please come in.") else println("Your name doesn't exist in the guest list.")
+    if (guest in guestList) println("Hi, $guest, please come in.") else println(
+        "Your name doesn't exist in the guest" +
+                "list."
+    )
 }
