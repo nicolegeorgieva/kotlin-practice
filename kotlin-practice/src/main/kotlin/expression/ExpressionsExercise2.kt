@@ -10,7 +10,9 @@ fun main() {
         return
     }
 
-    if (catsCount in 1..3) {
+    if (catsCount == 0) {
+        println("no cats")
+    } else if (catsCount in 1..3) {
         println("few cats")
     } else if (catsCount in 4..6) {
         println("several cats")
