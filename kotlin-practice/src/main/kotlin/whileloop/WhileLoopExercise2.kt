@@ -1,7 +1,7 @@
 package whileloop
 
 fun main() {
-    var cats = listOf("Tiger", "Smokey", "Sassy", "Patch", "Sammy")
+    val cats = listOf("Tiger", "Smokey", "Sassy", "Patch", "Sammy")
     var i = 0
 
     while (i < cats.size) {
