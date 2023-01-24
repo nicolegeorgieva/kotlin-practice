@@ -4,7 +4,7 @@ fun main() {
     var finished = false
     do {
         println("Please enter a number greater than 100")
-        val input = readln() ?: ""
+        val input = readln()
         val number = input.toInt()
 
         if (number > 100) {
