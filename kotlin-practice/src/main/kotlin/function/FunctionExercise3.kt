@@ -12,5 +12,5 @@ fun userData() {
     println("What's your birth year?")
     val birthYear = readln().toInt()
 
-    println("$name, $birthYear")
+    println("$name is ${2023 - birthYear - 1} or ${2023 - birthYear} y.o.")
 }
