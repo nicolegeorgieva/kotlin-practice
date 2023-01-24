@@ -1,10 +1,10 @@
 package whileloop
 
 fun main() {
+    val usernames = hashSetOf("john", "bob", "alice")
     var finished = false
 
     do {
-        val usernames = hashSetOf("john", "bob", "alice")
         println("Choose a username")
         val input = readln()
 
