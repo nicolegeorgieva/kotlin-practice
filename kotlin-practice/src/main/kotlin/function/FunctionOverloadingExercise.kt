@@ -7,7 +7,7 @@ fun main() {
 
 fun feedAnimal(animals: Collection<String>) {
     for (animal in animals) {
-        println("Feed the $animal.")
+        feedAnimal(animal)
     }
 }
 
