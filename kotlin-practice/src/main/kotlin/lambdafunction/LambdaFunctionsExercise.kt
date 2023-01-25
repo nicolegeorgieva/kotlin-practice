@@ -7,7 +7,7 @@ fun main() {
 }
 
 fun test(numbers: ArrayList<Int>, action: (Int) -> Int): ArrayList<Int> {
-    for (i in 0..numbers.size - 1) {
+    for (i in 0 until numbers.size) {
         if (numbers[i] % 2 == 0) {
             numbers[i] = action(numbers[i])
         }
