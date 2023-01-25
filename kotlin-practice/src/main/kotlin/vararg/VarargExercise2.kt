@@ -4,7 +4,7 @@ fun main() {
     sayHello(3, "Nicole", "Iliyan")
 }
 
-private fun sayHello(count: Int, vararg names: String) {
+fun sayHello(count: Int, vararg names: String) {
     for (name in names) {
         for (i in 1..count) {
             println("Hello, $name!")
