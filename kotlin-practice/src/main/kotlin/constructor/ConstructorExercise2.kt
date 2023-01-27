@@ -1,12 +1,13 @@
 package constructor
 
 fun main() {
-    val user1 = userAccount()
-    val user2 = userAccount("Morgana")
-    val user3 = userAccount("Nicole", 200.0)
+    val user1 = UserAccount()
+    val user2 = UserAccount("Morgana")
+    val user3 = UserAccount("Nicole", 200.0)
+    val user4 = UserAccount("Anna", 1000.00)
 }
 
-class userAccount {
+class UserAccount {
     var userName: String
     var balance: Double
     var tShirtPrice = 20.0
