@@ -1,4 +1,4 @@
-package constructors
+package constructor
 
 fun main() {
     val table = Table()
