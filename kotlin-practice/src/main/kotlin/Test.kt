@@ -2,8 +2,8 @@
 // a fun (takes Person) : String , returns "Hi, X, you're X y. o.
 
 fun main() {
-    val name1 = readPerson()
-    println(message(name1))
+    val person1 = readPerson()
+    println(message(person1))
 }
 
 fun readPerson(): Person {
