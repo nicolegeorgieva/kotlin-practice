@@ -4,7 +4,7 @@ fun main() {
     val year = 2015
 
     printYear()
-    println("The year inside main is $year.")
+    println("The year inside practice.main is $year.")
 }
 
 fun printYear() {
