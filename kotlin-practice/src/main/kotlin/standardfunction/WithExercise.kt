@@ -6,6 +6,9 @@ fun main() {
         age = 26
         printInfo()
     }
+
+    val person2 = Person()
+    person2.printInfo()
 }
 
 class Person {
