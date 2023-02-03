@@ -1,12 +1,15 @@
 package standardfunction
 
 fun main() {
-    Restaurant().run {
+    val updatedMenu = Restaurant().run {
         standardDish = "salad"
         todaySpecial = "soup"
 
         printMenu()
+        this
     }
+
+    println(updatedMenu)
 }
 
 class Restaurant {
