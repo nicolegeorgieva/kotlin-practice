@@ -1,7 +1,7 @@
 package standardfunction
 
 fun main() {
-    with(Store()) {
+    val newInventory = with(Store()) {
         shoes = 120
         shirts = 87
         jackets = 102
