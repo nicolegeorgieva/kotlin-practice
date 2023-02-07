@@ -15,7 +15,7 @@ fun main() {
     sendEmail(customers)
 }
 
-fun sendEmail(customers: MutableCollection<CustomerInfo>) {
+fun sendEmail(customers: Collection<CustomerInfo>) {
     customers.forEach { println("Sending an email to ${it.email}") }
 }
 
