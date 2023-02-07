@@ -16,7 +16,7 @@ fun main() {
 }
 
 fun sendEmail(customers: MutableCollection<CustomerInfo>) {
-    customers.forEach { _ -> println("Welcome email") }
+    customers.forEach { println("Sending an email to ${it.email}") }
 }
 
 data class CustomerInfo(val name: String, val email: String, val productsBought: Int)
