@@ -11,6 +11,7 @@ fun animalGroupLifespan(animalGroup: String): Int {
         "cats" -> 15
         "dogs" -> 10
         "rabbit" -> 12
+        "mice" -> 2
         else -> 20
     }
 }
