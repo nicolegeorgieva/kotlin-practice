@@ -27,25 +27,23 @@ fun deliverTo(human: Human): String? {
     val street = human.address?.let { validateStreet(it) }
     if (name == null || street == null) return "Invalid name or street."
 
-    var res = "Delivering to "
+    return buildString {
+        append("Delivering to $name")
 
-    res += "$name"
+        if (!human.address.neighborhood.isNullOrBlank()) {
+            append(", ${human.address.neighborhood}")
+        }
 
-    if (!human.address.neighborhood.isNullOrBlank()) {
-        res += ", ${human.address.neighborhood}"
+        append(", $street")
+
+        if (human.address.flat?.floor != null) {
+            append(", floor: ${human.address.flat.floor}")
+        }
+
+        if (human.address.flat?.apartment != null) {
+            append(", apartment: ${human.address.flat.apartment}")
+        }
     }
-
-    res += ", $street"
-
-    if (human.address.flat?.floor != null) {
-        res += ", floor: ${human.address.flat.floor}"
-    }
-
-    if (human.address.flat?.apartment != null) {
-        res += ", apartment: ${human.address.flat.apartment}"
-    }
-
-    return res
 }
 
 fun validateName(human: Human): String? {
@@ -62,23 +60,21 @@ fun validateName(human: Human): String? {
 }
 
 fun validateStreet(adress: Address): String? {
-    var res = ""
+    return buildString {
+        if (adress.street != null && adress.street.name.isNotBlank()) {
+            append(adress.street.name)
+        } else {
+            return null
+        }
 
-    if (adress.street != null && adress.street.name.isNotBlank()) {
-        res += adress.street.name
-    } else {
-        return null
+        if (adress.street.number?.number != null) {
+            append(adress.street.number.number)
+        } else append(" ")
+
+        if (adress.street.number?.letter != null) {
+            append(adress.street.number.letter)
+        }
     }
-
-    if (adress.street.number?.number != null) {
-        res += adress.street.number.number
-    } else res += " "
-
-    if (adress.street.number?.letter != null) {
-        res += adress.street.number.letter
-    }
-
-    return res
 }
 
 data class Human(
