@@ -10,7 +10,7 @@ fun main() {
         Sale("Chocolate", 3.0, 5)
     )
 
-    println(groupByPriceCategory(salesData))
+    println(calculateTotalProfit(salesData, 1.0))
 }
 
 /*
@@ -20,7 +20,9 @@ Your task is to create a Kotlin program that performs various operations on the 
  */
 
 data class Sale(
-    val productName: String, val price: Double, val quantitySold: Int
+    val productName: String,
+    val price: Double,
+    val quantitySold: Int
 )
 
 fun calculateTotalRevenue(salesData: List<Sale>): Double {
@@ -53,6 +55,11 @@ enum class PriceCategory {
     High
 }
 
+data class SaleWithProfit(
+    val saleData: Sale,
+    val profit: Double
+)
+
 fun calculatePriceCategory(price: Double): PriceCategory {
     return when (price) {
         in 0.0..2.0 -> PriceCategory.Low
@@ -63,4 +70,13 @@ fun calculatePriceCategory(price: Double): PriceCategory {
 
 fun groupByPriceCategory(salesData: List<Sale>): Map<PriceCategory, List<Sale>> {
     return salesData.groupBy { calculatePriceCategory(it.price) }
+}
+
+fun calculateTotalProfit(salesData: List<Sale>, fixedCostPerProduct: Double): List<String> {
+    return salesData.map {
+        SaleWithProfit(saleData = it, profit = (it.price * it.quantitySold) - (fixedCostPerProduct * it.quantitySold))
+    }
+        .map {
+            "${it.saleData.productName} - ${it.profit} profit"
+        }
 }
