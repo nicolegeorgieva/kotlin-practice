@@ -10,7 +10,7 @@ fun main() {
         Sale("Chocolate", 3.0, 5)
     )
 
-    println(findTopNSellingProducts(salesData, 3))
+    println(groupByPriceCategory(salesData))
 }
 
 /*
@@ -36,7 +36,8 @@ fun findMostSoldProduct(salesData: List<Sale>): String {
 }
 
 fun filterSalesByPriceRange(salesData: List<Sale>, minPrice: Double, maxPrice: Double): List<String> {
-    return salesData.filter { it.price in minPrice..maxPrice }.sortedByDescending { it.price }
+    return salesData.filter { it.price in minPrice..maxPrice }
+        .sortedByDescending { it.price }
         .map { "${it.productName}: ${it.price}" }
 }
 
@@ -44,4 +45,22 @@ fun findTopNSellingProducts(salesData: List<Sale>, topN: Int): List<String> {
     return salesData.sortedByDescending { it.quantitySold }
         .take(topN)
         .map { "${it.productName}: ${it.quantitySold} sold" }
+}
+
+enum class PriceCategory {
+    Low,
+    Medium,
+    High
+}
+
+fun calculatePriceCategory(price: Double): PriceCategory {
+    return when (price) {
+        in 0.0..2.0 -> PriceCategory.Low
+        in 2.01..3.0 -> PriceCategory.Medium
+        else -> PriceCategory.High
+    }
+}
+
+fun groupByPriceCategory(salesData: List<Sale>): Map<PriceCategory, List<Sale>> {
+    return salesData.groupBy { calculatePriceCategory(it.price) }
 }
