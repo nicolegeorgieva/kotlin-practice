@@ -10,7 +10,7 @@ fun main() {
         Sale("Chocolate", 3.0, 5)
     )
 
-    println(filterSalesByPriceRange(salesData, 2.0, 5.0))
+    println(findTopNSellingProducts(salesData, 3))
 }
 
 /*
@@ -40,6 +40,8 @@ fun filterSalesByPriceRange(salesData: List<Sale>, minPrice: Double, maxPrice: D
         .map { "${it.productName}: ${it.price}" }
 }
 
-fun findTopNSellingProducts() {
-    TODO()
+fun findTopNSellingProducts(salesData: List<Sale>, topN: Int): List<String> {
+    return salesData.sortedByDescending { it.quantitySold }
+        .take(topN)
+        .map { "${it.productName}: ${it.quantitySold} sold" }
 }
