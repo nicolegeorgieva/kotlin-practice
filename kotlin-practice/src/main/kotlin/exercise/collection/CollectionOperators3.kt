@@ -22,7 +22,7 @@ fun main() {
         )
     )
 
-    println(findTopNSalaries(employees, 2))
+    println(findTopNSalaries(employees, 0))
 }
 
 data class Employee(
