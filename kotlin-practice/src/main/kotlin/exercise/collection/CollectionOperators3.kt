@@ -49,7 +49,18 @@ fun filterEmployeesByGivenDepartment(employees: List<Employee>, department: Stri
     return employees.filter { it.department == department }
 }
 
-fun findTopNSalaries(employees: List<Employee>, topN: Int): List<Employee> {
-    return employees.sortedByDescending { it.salary }.take(topN)
+sealed interface TopNSalariesResult {
+    data class Error(val message: String) : TopNSalariesResult
+    data class Success(val list: List<Employee>) : TopNSalariesResult
 }
+
+fun findTopNSalaries(employees: List<Employee>, topN: Int): TopNSalariesResult {
+    if (topN <= 0 || topN > employees.size) return TopNSalariesResult.Error("Invalid criteria")
+
+    val res = employees.sortedByDescending { it.salary }.take(topN)
+
+    return TopNSalariesResult.Success(res)
+}
+
+
 

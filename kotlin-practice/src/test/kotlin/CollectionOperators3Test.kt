@@ -69,13 +69,13 @@ class CollectionOperators3Test : FreeSpec({
 
     "find top n salaries" - {
         "top 1" {
-            findTopNSalaries(employees, 1) shouldBe listOf(
-                Employee(125, "Lulu", "IT", 5600.0)
+            findTopNSalaries(employees, 1) shouldBe TopNSalariesResult.Success(
+                list = listOf(Employee(125, "Lulu", "IT", 5600.0))
             )
         }
 
         "top 0" {
-            findTopNSalaries(employees, 0) shouldBe listOf()
+            findTopNSalaries(employees, 0) shouldBe TopNSalariesResult.Error(message = "Invalid criteria")
         }
     }
 })
