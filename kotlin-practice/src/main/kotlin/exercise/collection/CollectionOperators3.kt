@@ -22,7 +22,7 @@ fun main() {
         )
     )
 
-    println(findTopNSalaries(employees, 0))
+    println(calculateAverageSalaryByDepartment(employees))
 }
 
 data class Employee(
@@ -36,7 +36,7 @@ fun findEmployeeById(employees: List<Employee>, id: Int): Employee? {
     return employees.find { it.employeeId == id }
 }
 
-//sorts the list of employees alphabetically by their names
+// sorts the list of employees alphabetically by their names
 fun sortEmployeesByName(employees: List<Employee>): List<Employee> {
     return employees.sortedBy { it.name }
 }
@@ -62,5 +62,13 @@ fun findTopNSalaries(employees: List<Employee>, topN: Int): TopNSalariesResult {
     return TopNSalariesResult.Success(res)
 }
 
+// Pair(IT, 5600), Pair(HR, 2000)
+fun calculateAverageSalaryByDepartment(employees: List<Employee>): Map<String, Double> {
+    val filtered = filterEmployeesByDepartment(employees)
+
+    return filtered.mapValues { (_, filtered) ->
+        filtered.map { it.salary }.average()
+    }
+}
 
 
