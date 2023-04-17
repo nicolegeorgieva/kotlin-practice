@@ -22,8 +22,7 @@ fun main() {
         )
     )
 
-    println(filterEmployeesByDepartment(employees))
-    println(filterEmployeesByGivenDepartment(employees, "IT"))
+    println(findTopNSalaries(employees, 2))
 }
 
 data class Employee(
@@ -48,4 +47,8 @@ fun filterEmployeesByDepartment(employees: List<Employee>): Map<String, List<Emp
 
 fun filterEmployeesByGivenDepartment(employees: List<Employee>, department: String): List<Employee> {
     return employees.filter { it.department == department }
+}
+
+fun findTopNSalaries(employees: List<Employee>, topN: Int): List<Employee> {
+    return employees.sortedByDescending { it.salary }.take(topN)
 }
