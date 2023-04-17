@@ -22,7 +22,8 @@ fun main() {
         )
     )
 
-    println(sortEmployeesByName(employees))
+    println(filterEmployeesByDepartment(employees))
+    println(filterEmployeesByGivenDepartment(employees, "IT"))
 }
 
 data class Employee(
@@ -39,4 +40,12 @@ fun findEmployeeById(employees: List<Employee>, id: Int): Employee? {
 //sorts the list of employees alphabetically by their names
 fun sortEmployeesByName(employees: List<Employee>): List<Employee> {
     return employees.sortedBy { it.name }
+}
+
+fun filterEmployeesByDepartment(employees: List<Employee>): Map<String, List<Employee>> {
+    return employees.groupBy { it.department }
+}
+
+fun filterEmployeesByGivenDepartment(employees: List<Employee>, department: String): List<Employee> {
+    return employees.filter { it.department == department }
 }
