@@ -52,3 +52,4 @@ fun filterEmployeesByGivenDepartment(employees: List<Employee>, department: Stri
 fun findTopNSalaries(employees: List<Employee>, topN: Int): List<Employee> {
     return employees.sortedByDescending { it.salary }.take(topN)
 }
+

@@ -4,7 +4,6 @@ import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
 
 class ExampleTest : FreeSpec({
-
     "example" {
         priceAfterTax(10.0) shouldBe 12.0
     }
