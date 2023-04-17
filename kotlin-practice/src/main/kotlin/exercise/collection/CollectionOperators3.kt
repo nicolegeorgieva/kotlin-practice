@@ -22,7 +22,7 @@ fun main() {
         )
     )
 
-    println(filterByLetter(employees, 'u'))
+    println(filterByLetter(employees, 'U'))
 }
 
 data class Employee(
@@ -73,7 +73,7 @@ fun calculateAverageSalaryByDepartment(employees: List<Employee>): Map<String, D
 
 // Filter employees by a specific letter in their name
 fun filterByLetter(employees: List<Employee>, letter: Char): List<Employee> {
-    return employees.filter { !it.name.contains(letter) }
+    return employees.filter { !it.name.uppercase().contains(letter.uppercase()) }
 }
 
 

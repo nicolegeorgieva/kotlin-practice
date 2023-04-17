@@ -78,4 +78,21 @@ class CollectionOperators3Test : FreeSpec({
             findTopNSalaries(employees, 0) shouldBe TopNSalariesResult.Error(message = "Invalid criteria")
         }
     }
+
+    "calculate average salary by department" {
+        calculateAverageSalaryByDepartment(employees) shouldBe mapOf(
+            "HR" to 2000.0,
+            "IT" to 5600.0,
+            "Customer support" to 1500.0
+        )
+    }
+
+    "filter by letter" - {
+        "that contains in the list" {
+            filterByLetter(employees, 'u') shouldBe listOf(
+                Employee(124, "Kayla", "HR", 2000.0),
+                Employee(126, "Amy", "Customer support", 1500.0)
+            )
+        }
+    }
 })
