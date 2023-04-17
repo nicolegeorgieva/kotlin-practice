@@ -22,7 +22,7 @@ fun main() {
         )
     )
 
-    println(findEmployeeById(employees, 126))
+    println(sortEmployeesByName(employees))
 }
 
 data class Employee(
@@ -34,4 +34,9 @@ data class Employee(
 
 fun findEmployeeById(employees: List<Employee>, id: Int): Employee? {
     return employees.find { it.employeeId == id }
+}
+
+//sorts the list of employees alphabetically by their names
+fun sortEmployeesByName(employees: List<Employee>): List<Employee> {
+    return employees.sortedBy { it.name }
 }
