@@ -35,5 +35,17 @@ fun String.consonants(): String {
 }
 
 fun String.capitalizeWords(): String {
-    return this.uppercase()
+    var res = ""
+
+    // Split the string into words
+    val words = this.split(" ")
+
+    for (word in words) {
+        // Capitalize the first letter and add the rest of the word in lowercase
+        val capitalizedWord = word.lowercase().replaceFirstChar { char -> char.uppercase() }
+        res += "$capitalizedWord "
+    }
+
+    // Remove the extra space at the end of the result string
+    return res.trim()
 }
