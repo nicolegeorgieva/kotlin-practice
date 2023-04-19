@@ -6,7 +6,7 @@ fun main() {
     println("Original String: $testString")
     println("Vowels: ${testString.vowels()}")
     println("Consonants: ${testString.consonants()}")
-//    println("Capitalized Words: ${testString.capitalizeWords()}")
+    println("Capitalized Words: ${testString.capitalizeWords()}")
 }
 
 fun String.vowels(): String {
@@ -32,4 +32,8 @@ fun String.consonants(): String {
     }
 
     return res.toSet().joinToString(", ")
+}
+
+fun String.capitalizeWords(): String {
+    return this.uppercase()
 }
