@@ -16,7 +16,7 @@ fun main() {
     val listNew = listOf("bag prices", "bags")
     println(listNew.mapp { it -> "$it are" })
 
-    println(list.map { "This it number $it" })
+    println(list.map { "This is number $it" })
     println(list.mapp { it * 3.0 })
 }
 
