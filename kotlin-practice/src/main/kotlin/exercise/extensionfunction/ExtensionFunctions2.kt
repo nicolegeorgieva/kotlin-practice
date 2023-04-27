@@ -13,12 +13,15 @@ fun main() {
         if (it % 2 != 0) it * 10 else null
     })
 
-    val listNew = listOf("bagPrices", "bags")
+    val listNew = listOf("bag prices", "bags")
     println(listNew.mapp { it -> "$it are" })
+
+    println(list.map { "This it number $it" })
+    println(list.mapp { it * 3.0 })
 }
 
-fun <T> List<T>.mapp(transform: (T) -> T): List<T> {
-    val result = mutableListOf<T>()
+fun <T, R> List<T>.mapp(transform: (T) -> R): List<R> {
+    val result = mutableListOf<R>()
     for (element in this) {
         result.add(transform(element))
     }
@@ -38,8 +41,8 @@ fun <T> List<T>.filterr(filter: (T) -> Boolean): List<T> {
 }
 
 // if it's null it's not added in the list
-fun <T> List<T>.mappNotNull(transform: (T) -> T?): List<T> {
-    val result = mutableListOf<T>()
+fun <T, R> List<T>.mappNotNull(transform: (T) -> R?): List<R> {
+    val result = mutableListOf<R>()
 
     for (element in this) {
         val transformed = transform(element)
