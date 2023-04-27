@@ -12,10 +12,13 @@ fun main() {
     println(list.mappNotNull {
         if (it % 2 != 0) it * 10 else null
     })
+
+    val listNew = listOf("bagPrices", "bags")
+    println(listNew.mapp { it + " are" })
 }
 
-fun List<Int>.mapp(transform: (Int) -> Int): List<Int> {
-    val result = mutableListOf<Int>()
+fun <T> List<T>.mapp(transform: (T) -> T): List<T> {
+    val result = mutableListOf<T>()
     for (element in this) {
         result.add(transform(element))
     }
@@ -24,8 +27,8 @@ fun List<Int>.mapp(transform: (Int) -> Int): List<Int> {
 
 fun myTransform(el: Int): Int = el * el
 
-fun List<Int>.filterr(filter: (Int) -> Boolean): List<Int> {
-    val result = mutableListOf<Int>()
+fun <T> List<T>.filterr(filter: (T) -> Boolean): List<T> {
+    val result = mutableListOf<T>()
 
     for (element in this) {
         if (filter(element)) result.add(element)
@@ -35,8 +38,8 @@ fun List<Int>.filterr(filter: (Int) -> Boolean): List<Int> {
 }
 
 // if it's null it's not added in the list
-fun List<Int>.mappNotNull(transform: (Int) -> Int?): List<Int> {
-    val result = mutableListOf<Int>()
+fun <T> List<T>.mappNotNull(transform: (T) -> T?): List<T> {
+    val result = mutableListOf<T>()
 
     for (element in this) {
         val transformed = transform(element)
