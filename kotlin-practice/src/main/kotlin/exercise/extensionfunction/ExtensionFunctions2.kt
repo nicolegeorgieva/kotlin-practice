@@ -14,7 +14,7 @@ fun main() {
     })
 
     val listNew = listOf("bagPrices", "bags")
-    println(listNew.mapp { it + " are" })
+    println(listNew.mapp { it -> "$it are" })
 }
 
 fun <T> List<T>.mapp(transform: (T) -> T): List<T> {
