@@ -9,14 +9,16 @@ fun main() {
         "Have a cupcake!"
     }
 
-    trickOrTreat(false, coins)()
+    trickOrTreat(false, null)()
 }
 
-fun trickOrTreat(isTrick: Boolean, extraTreat: (Int) -> String): () -> Unit {
+fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -> String)?): () -> Unit {
     return if (isTrick) {
         trick
     } else {
-        println(extraTreat(5))
+        if (extraTreat != null) {
+            println(extraTreat(5))
+        }
         treat
     }
 }
