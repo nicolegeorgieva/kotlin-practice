@@ -1,17 +1,19 @@
 package function
 
 fun main() {
-    val calculatedHours = 0.0
+    var calculatedTime = 3.0
 
-    println(calculateCurrentTimeOfStudyingInMin("15:20", "16:45"))
-    println(calculateCurrentTimeOfStudying(125, cutMins = 5))
+    val currentStudyMins = calculateCurrentTimeOfStudyingInMin("19:00", "20:16")
+    val currentStudy = calculateCurrentTimeOfStudying(currentStudyMins, cutMins = 4)
 
+    calculatedTime = calculateTotalTimeOfStudying(calculatedTime, currentStudy)
 
+    println(calculatedTime)
 }
 
-//fun calculateTotalTimeOfStudying(startTime: Double, currentTime: Double): Double {
-//
-//}
+fun calculateTotalTimeOfStudying(calculatedTime: Double, currentTime: Double): Double {
+    return calculatedTime + currentTime
+}
 
 fun calculateCurrentTimeOfStudying(mins: Int, cutMins: Int = 0): Double {
     var hour = ""
