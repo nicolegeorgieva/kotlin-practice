@@ -1,10 +1,10 @@
 package function
 
 fun main() {
-    var calculatedTime = 4.31
+    var calculatedTime: Double = 0.0
 
     val currentStudyMins = try {
-        calculateCurrentTimeOfStudyingInMin("20:51", "20:51")
+        calculateCurrentTimeOfStudyingInMin("21:00", "21:03")
     } catch (e: Exception) {
         0
     }
@@ -17,7 +17,10 @@ fun main() {
 
     calculatedTime = calculateTotalTimeOfStudying(calculatedTime, currentStudy)
 
-    println(calculatedTime)
+    println(calculatedTime.toString().split(".").let { parts ->
+        val mins = (parts[1] + "0").take(2)
+        "${parts[0]}h ${mins}m"
+    })
 }
 
 /**
@@ -33,12 +36,10 @@ fun calculateTotalTimeOfStudying(calculatedTime: Double, currentTime: Double): D
  * (e.g. 1.2) in which "1" means 1 hour and "2" means 20 minutes. Or total - 1h 20m.
  */
 fun calculateCurrentTimeOfStudying(mins: Int, cutMins: Int = 0): Double {
-    var hour = ""
-    var min = ""
     val reducedMins = mins - cutMins
 
-    hour = (reducedMins / 60).toString()
-    min = (reducedMins - (hour.toInt() * 60)).toString()
+    val hour = (reducedMins / 60).toString()
+    val min = (reducedMins - (hour.toInt() * 60)).toString()
 
     val res = if (min.toInt() < 10) {
         "$hour.0$min".toDouble()
@@ -63,6 +64,5 @@ fun calculateCurrentTimeOfStudyingInMin(startTime: String, endTime: String): Int
     val endHourInMins = endTime.removeRange(2, 5).toInt() * minutesPerHour
     val totalEndTimeInMins = endHourInMins + endTime.removeRange(0, 3).toInt()
 
-    val res = totalEndTimeInMins - totalStartTimeInMins
-    return res
+    return totalEndTimeInMins - totalStartTimeInMins
 }
