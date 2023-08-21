@@ -1,16 +1,25 @@
 package function
 
 fun main() {
+    val calculatedHours = 0.0
+
     println(calculateCurrentTimeOfStudyingInMin("15:20", "16:45"))
-    println(calculateCurrentTimeOfStudying(125))
+    println(calculateCurrentTimeOfStudying(125, cutMins = 5))
+
+
 }
 
-fun calculateCurrentTimeOfStudying(mins: Int): Double {
+//fun calculateTotalTimeOfStudying(startTime: Double, currentTime: Double): Double {
+//
+//}
+
+fun calculateCurrentTimeOfStudying(mins: Int, cutMins: Int = 0): Double {
     var hour = ""
     var min = ""
+    val reducedMins = mins - cutMins
 
-    hour = (mins / 60).toString()
-    min = (mins - (hour.toInt() * 60)).toString()
+    hour = (reducedMins / 60).toString()
+    min = (reducedMins - (hour.toInt() * 60)).toString()
 
     val res = if (min.toInt() < 10) {
         "$hour.0$min".toDouble()
