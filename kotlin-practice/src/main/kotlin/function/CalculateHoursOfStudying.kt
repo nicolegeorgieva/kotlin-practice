@@ -1,10 +1,10 @@
 package function
 
 fun main() {
-    var calculatedTime: Double = 0.0
+    var calculatedTime: Double = 0.2
 
     val currentStudyMins = try {
-        calculateCurrentTimeOfStudyingInMin("21:00", "21:03")
+        calculateCurrentTimeOfStudyingInMin("12:53", "13:11")
     } catch (e: Exception) {
         0
     }
