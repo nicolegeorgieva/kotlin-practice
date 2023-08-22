@@ -20,9 +20,15 @@ class Wolf1() {
         w = Test()
     }
 
-    val wolf = w as? Wolf
-
     fun myFunction() {
-        wolf?.eat()
+        try {
+            val wolf = w as Wolf
+            wolf.eat()
+        } catch (e: Exception) {
+            println("Not ok")
+        } finally {
+            println("Ok")
+        }
+
     }
 }
