@@ -5,6 +5,7 @@ fun main() {
         "book", "horse", "glass", "glass", Tasks("task1"), Tasks("task1"),
         ToDo("todo1"), ToDo("todo1")
     )
+
     val isEqual = list[2] == list[3]
     println(isEqual)
 
