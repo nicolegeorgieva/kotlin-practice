@@ -11,7 +11,11 @@ fun main() {
     map1.forEach { (key, value) ->
         result += "$key=${value.title}, "
     }
+
     println(result.dropLast(2))
+
+    println(map1.containsKey("dish1"))
+    println(map1.containsValue(Dish("Cake")))
 }
 
 data class Dish(val title: String)
