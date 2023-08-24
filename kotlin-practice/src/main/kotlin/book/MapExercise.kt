@@ -5,7 +5,7 @@ fun main() {
     val dish2 = Dish("Cake")
     val dish3 = Dish("Soup")
 
-    val map1 = mapOf<String, Dish>("dish1" to dish1, "dish2" to dish2, "dish3" to dish3)
+    val map1 = mutableMapOf<String, Dish>("dish1" to dish1, "dish2" to dish2, "dish3" to dish3)
 
     var result = ""
     map1.forEach { (key, value) ->
@@ -19,6 +19,9 @@ fun main() {
 
     println(map1.get("dish1"))
     println(map1["dish1"])
+
+    map1.put("dish4", dish3)
+    println(map1)
 }
 
 data class Dish(val title: String)
