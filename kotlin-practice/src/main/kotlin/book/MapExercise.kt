@@ -25,6 +25,9 @@ fun main() {
 
     println(map1.put("dish4", dish2))
     println(map1)
+
+    map1.clear()
+    println(map1)
 }
 
 data class Dish(val title: String)
