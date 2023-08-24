@@ -16,6 +16,9 @@ fun main() {
 
     println(map1.containsKey("dish1"))
     println(map1.containsValue(Dish("Cake")))
+
+    println(map1.get("dish1"))
+    println(map1["dish1"])
 }
 
 data class Dish(val title: String)
