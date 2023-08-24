@@ -22,6 +22,9 @@ fun main() {
 
     map1.put("dish4", dish3)
     println(map1)
+
+    println(map1.put("dish4", dish2))
+    println(map1)
 }
 
 data class Dish(val title: String)
