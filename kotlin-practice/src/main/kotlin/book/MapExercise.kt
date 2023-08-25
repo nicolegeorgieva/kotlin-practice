@@ -12,6 +12,9 @@ fun main() {
         result += "$key=${value.title}, "
     }
 
+    val arr = arrayOfNulls<Int?>(2)
+    println(arr.joinToString(", "))
+
     println(result.dropLast(2))
 
     println(map1.containsKey("dish1"))
