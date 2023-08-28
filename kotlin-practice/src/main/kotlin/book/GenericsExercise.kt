@@ -8,6 +8,14 @@ fun main() {
 
     val topCat = catContest.getWinners().first().name
     println(topCat)
+
+    val allPetsContest = Contest<Pet>()
+
+    allPetsContest.addScore(Dog("Rex"), 100)
+    allPetsContest.addScore(Fish("Amy"), 35)
+
+    val topPet = allPetsContest.getWinners().first().name
+    println(topPet)
 }
 
 abstract class Pet(var name: String)
