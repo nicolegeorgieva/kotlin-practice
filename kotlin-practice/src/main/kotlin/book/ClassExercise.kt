@@ -1,16 +1,16 @@
 package book
 
 fun main() {
-    val myCats = arrayOf(Cat("Misty"), Cat(null), null, Cat("Socks"))
+    val elephants = arrayOf(Elephant("Misty"), Elephant(null), null, Elephant("Socks"))
 
-    for (cat in myCats) {
-        print("${cat?.name}:")
-        cat?.meow()
+    for (elephant in elephants) {
+        print("${elephant?.name}:")
+        elephant?.howl()
     }
 }
 
-class Cat(var name: String? = null) {
-    fun meow() {
-        println("Meow!")
+class Elephant(var name: String? = null) {
+    fun howl() {
+        println("sjdnalarjb!")
     }
 }
