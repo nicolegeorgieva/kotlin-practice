@@ -11,6 +11,25 @@ fun main() {
     println(catOwner.pets)
 }
 
+class CatRetailer : Retailer<Cat> {
+    override fun sell(): Cat {
+        println("Sell cat")
+        return Cat("")
+    }
+}
+
+class DogRetailer : Retailer<Dog> {
+    override fun sell(): Dog {
+        println("Sell dog")
+        return Dog("")
+    }
+}
+
+interface Retailer<T> {
+    fun sell(): T
+}
+
+
 class PetOwner<T : Pet>(t: T) {
     val pets = mutableListOf(t)
 
