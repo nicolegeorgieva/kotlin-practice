@@ -19,7 +19,12 @@ fun main() {
 }
 
 abstract class Pet(var name: String)
-class Cat(name: String) : Pet(name)
+
+class Cat(name: String) : Pet(name) {
+    override fun toString(): String {
+        return "Cat(name=\"$name\")"
+    }
+}
 class Dog(name: String) : Pet(name)
 class Fish(name: String) : Pet(name)
 
