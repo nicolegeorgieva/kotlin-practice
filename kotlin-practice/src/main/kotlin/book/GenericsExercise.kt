@@ -26,7 +26,11 @@ class Cat(name: String) : Pet(name) {
     }
 }
 class Dog(name: String) : Pet(name)
-class Fish(name: String) : Pet(name)
+class Fish(name: String) : Pet(name) {
+    override fun toString(): String {
+        return "Fish(name=\"$name\")"
+    }
+}
 
 class Contest<T : Pet> {
     val scores: MutableMap<T, Int> = mutableMapOf()

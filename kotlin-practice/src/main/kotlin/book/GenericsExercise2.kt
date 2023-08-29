@@ -13,7 +13,9 @@ fun main() {
     val dogRetailer = DogRetailer()
     val catRetailer = CatRetailer()
     val fishRetailer = FishRetailer()
-    val petRetailer = CatRetailer()
+
+    var petRetailer: Retailer<Pet> = CatRetailer()
+    petRetailer = fishRetailer
 
     println(petRetailer.sell())
 }
@@ -39,10 +41,9 @@ class FishRetailer : Retailer<Fish> {
     }
 }
 
-interface Retailer<T> {
+interface Retailer<out T> {
     fun sell(): T
 }
-
 
 class PetOwner<T : Pet>(t: T) {
     val pets = mutableListOf(t)
