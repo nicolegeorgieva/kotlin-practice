@@ -1,7 +1,11 @@
 package book
 
 fun main() {
-    val catContest = Contest<Cat>()
+    val catVet = Vet<Cat>()
+    val dogVet = Vet<Dog>()
+    val fishVet = Vet<Fish>()
+
+    val catContest = Contest(catVet)
 
     catContest.addScore(Cat("Fuzz"), 50)
     catContest.addScore(Cat("Katsu"), 45)
@@ -9,10 +13,10 @@ fun main() {
     val topCat = catContest.getWinners().first().name
     println(topCat)
 
-    val allPetsContest = Contest<Pet>()
+    val allPetsContest = Contest(dogVet)
 
     allPetsContest.addScore(Dog("Rex"), 100)
-    allPetsContest.addScore(Fish("Amy"), 35)
+    allPetsContest.addScore(Dog("Amy"), 35)
 
     val topPet = allPetsContest.getWinners().first().name
     println(topPet)
@@ -32,7 +36,7 @@ class Fish(name: String) : Pet(name) {
     }
 }
 
-class Contest<T : Pet> {
+class Contest<T : Pet>(var vet: Vet<T>) {
     val scores: MutableMap<T, Int> = mutableMapOf()
 
     fun addScore(t: T, score: Int = 0) {

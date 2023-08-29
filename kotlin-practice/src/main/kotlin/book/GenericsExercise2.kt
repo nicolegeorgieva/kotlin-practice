@@ -20,6 +20,12 @@ fun main() {
     println(petRetailer.sell())
 }
 
+class Vet<T : Pet> {
+    fun treat(t: T) {
+        println("Treat pet ${t.name}")
+    }
+}
+
 class CatRetailer : Retailer<Cat> {
     override fun sell(): Cat {
         println("Sell cat")
