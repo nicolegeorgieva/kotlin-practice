@@ -9,6 +9,13 @@ fun main() {
     catOwner.add(catKatsu)
 
     println(catOwner.pets)
+
+    val dogRetailer = DogRetailer()
+    val catRetailer = CatRetailer()
+    val fishRetailer = FishRetailer()
+    val petRetailer = CatRetailer()
+
+    println(petRetailer.sell())
 }
 
 class CatRetailer : Retailer<Cat> {
@@ -22,6 +29,13 @@ class DogRetailer : Retailer<Dog> {
     override fun sell(): Dog {
         println("Sell dog")
         return Dog("")
+    }
+}
+
+class FishRetailer : Retailer<Fish> {
+    override fun sell(): Fish {
+        println("Sell fish")
+        return Fish("")
     }
 }
 
