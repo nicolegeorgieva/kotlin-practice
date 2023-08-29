@@ -1,11 +1,17 @@
 package book
 
 fun main() {
+    val catFiz = Cat("Fiz")
+
+    val petVet = Vet<Pet>()
     val catVet = Vet<Cat>()
     val dogVet = Vet<Dog>()
     val fishVet = Vet<Fish>()
 
-    val catContest = Contest(catVet)
+    catVet.treat(catFiz)
+    petVet.treat(catFiz)
+
+    val catContest = Contest<Cat>(petVet)
 
     catContest.addScore(Cat("Fuzz"), 50)
     catContest.addScore(Cat("Katsu"), 45)
@@ -13,10 +19,10 @@ fun main() {
     val topCat = catContest.getWinners().first().name
     println(topCat)
 
-    val allPetsContest = Contest(dogVet)
+    val allPetsContest = Contest(petVet)
 
     allPetsContest.addScore(Dog("Rex"), 100)
-    allPetsContest.addScore(Dog("Amy"), 35)
+    allPetsContest.addScore(Fish("Amy"), 35)
 
     val topPet = allPetsContest.getWinners().first().name
     println(topPet)
