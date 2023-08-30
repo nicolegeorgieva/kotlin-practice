@@ -22,5 +22,8 @@ fun main() {
 
     val addFive: (Int) -> Int = { x -> x + 5 }
     println(addFive(10))
+
+    val newVariant: (Int) -> Int = { it + 5 }
+    println(newVariant(10))
 }
 
