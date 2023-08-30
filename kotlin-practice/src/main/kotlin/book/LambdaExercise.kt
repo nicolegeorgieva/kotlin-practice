@@ -13,5 +13,8 @@ fun main() {
 
     val b = { "Pow" }
     println(b())
+
+    val add: (x: Int, y: Int) -> Int = { x: Int, y: Int -> x + y }
+    println(add(2, 2))
 }
 
