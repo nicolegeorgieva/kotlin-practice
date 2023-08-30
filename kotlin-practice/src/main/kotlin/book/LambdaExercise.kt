@@ -16,5 +16,8 @@ fun main() {
 
     val add: (x: Int, y: Int) -> Int = { x: Int, y: Int -> x + y }
     println(add(2, 2))
+
+    val l = { x: Int -> println("The value is $x") }
+    l(5)
 }
 
