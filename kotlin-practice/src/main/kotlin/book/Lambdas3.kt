@@ -1,8 +1,8 @@
 package book
 
 fun main() {
-    val pounds = getConversionLambda("KgsToPounds")(2.5)
-    println(pounds)
+    val lambda = getConversionLambda("KgsToPounds")(2.5)
+    println(lambda)
 
     println(convert(2.5, getConversionLambda("KgsToPounds")))
 }
