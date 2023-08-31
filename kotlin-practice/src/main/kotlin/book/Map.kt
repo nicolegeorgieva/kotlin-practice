@@ -16,4 +16,10 @@ fun main() {
 
     val groceryNames = groceries2.map { it.name }
     println(groceryNames)
+
+    val list = listOf("ads", "sfs", "dofds", null)
+    val newList = list.mapNotNull {
+        if (it == "dofds") null else it?.uppercase()
+    }
+    println(newList)
 }
