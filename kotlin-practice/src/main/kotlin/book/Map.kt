@@ -5,7 +5,7 @@ fun main() {
 
     println(myMap.values.sum())
     println(myMap.keys.size)
-
+    println(myMap.mapKeys { it.key.uppercase() })
 
     val groceries2 = listOf(
         Grocery("Tomatoes", "Vegetables", "lb", 5.2),
