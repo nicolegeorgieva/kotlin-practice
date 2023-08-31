@@ -1,7 +1,7 @@
 package book
 
 fun main() {
-    val myMap = mapOf(Pair("a", 1), Pair("b", 2))
+    val myMap = mapOf("a" to 1, "b" to 2)
 
     println(myMap.values.sum())
     println(myMap.keys.size)
