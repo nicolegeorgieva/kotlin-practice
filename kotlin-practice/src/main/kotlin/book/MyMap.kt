@@ -9,6 +9,15 @@ fun main() {
     x2 = myMap.entries.fold(0) { x, y -> x * y.value }
 
     println("$x1$x2")
+
+    //
+
+    x1 = ""
+    x2 = 0
+
+    x2 = myMap.values.groupBy { it }.keys.sumBy { it }
+
+    println("$x1$x2")
 }
 
 
