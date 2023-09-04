@@ -18,6 +18,16 @@ fun main() {
     x2 = myMap.values.groupBy { it }.keys.sumBy { it }
 
     println("$x1$x2")
+
+    //
+
+    x1 = ""
+    x2 = 0
+
+    x1 = "ABCDE"
+    x2 = myMap.values.fold(12) { x, y -> x - y }
+
+    println("$x1$x2")
 }
 
 
