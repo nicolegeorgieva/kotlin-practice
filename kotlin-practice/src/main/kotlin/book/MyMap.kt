@@ -46,6 +46,16 @@ fun main() {
     x1 = myMap.values.fold("") { x, y -> x + y }
 
     println("$x1$x2")
+
+    //
+
+    x1 = ""
+    x2 = 0
+
+    x1 = myMap.values.fold(0) { x, y -> x + y }.toString()
+    x2 = myMap.keys.groupBy { it }.size
+
+    println("$x1$x2")
 }
 
 
