@@ -28,6 +28,15 @@ fun main() {
     x2 = myMap.values.fold(12) { x, y -> x - y }
 
     println("$x1$x2")
+
+    //
+
+    x1 = ""
+    x2 = 0
+
+    x2 = myMap.entries.fold(1) { x, y -> x * y.value }
+
+    println("$x1$x2")
 }
 
 
