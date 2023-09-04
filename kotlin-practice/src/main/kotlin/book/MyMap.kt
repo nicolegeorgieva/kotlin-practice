@@ -15,7 +15,7 @@ fun main() {
     x1 = ""
     x2 = 0
 
-    x2 = myMap.values.groupBy { it }.keys.sumBy { it }
+    x2 = myMap.values.groupBy { it }.keys.sum()
 
     println("$x1$x2")
 
