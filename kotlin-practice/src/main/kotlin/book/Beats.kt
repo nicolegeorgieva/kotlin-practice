@@ -1,20 +1,15 @@
 package book
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.File
 import javax.sound.sampled.AudioSystem
 
-fun main() {
-    val coroutine = CoroutineScope(Dispatchers.IO)
-
-    coroutine.launch {
-        playBeats("x-x-x-x-x-x-x-", "audio/toms.aiff")
-        playBeats("x------x------", "audio/crash_cymbal.aiff")
-    }
-
-    Thread.sleep(100_000)
+@OptIn(DelicateCoroutinesApi::class)
+suspend fun main() {
+    GlobalScope.launch { playBeats("x-x-x-x-x-x-x-", "audio/toms.aiff") }
+    playBeats("x------x------", "audio/crash_cymbal.aiff")
 }
 
 suspend fun playBeats(beats: String, file: String) {
