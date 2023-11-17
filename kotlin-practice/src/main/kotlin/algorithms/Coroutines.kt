@@ -31,8 +31,6 @@ suspend fun main() {
 
     // 10s
     println("${quote.await()}: ${(googleRes.await() + alexaRes.await()) / 2}")
-
-
 }
 
 fun myLaunch(block: suspend () -> Unit) {
