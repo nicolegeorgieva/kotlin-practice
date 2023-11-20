@@ -6,12 +6,12 @@ fun main() {
             "projects related to productivity, fintech, and health. I'm genuinely passionate about tech and believe " +
             "that IT has a huge role to play in our future. I’m ready to bring my expertise to exciting new challenges" +
             " in Android development!"
-    println(text.wordsCount())
+    println(text.wordsCount { it !in listOf("a", "to", "the") })
     println(text.wordsCountWithDensity())
 }
 
 // Nice exercise. The exercise is under number 5. Nice.
-private fun String.wordsCount(): Map<String, Int> {
+private fun String.wordsCount(additionalWordFilter: ((String) -> Boolean)? = null): Map<String, Int> {
     val wordsCountMap = mutableMapOf<String, Int>()
 
     // Nice, exercise, The, exercise
@@ -19,7 +19,15 @@ private fun String.wordsCount(): Map<String, Int> {
         it != '.' && it != ',' && it != '!'
     }.lowercase().split(" ")
 
-    for (word in words) {
+    val latest = if (additionalWordFilter != null) {
+        words.filter {
+            additionalWordFilter(it)
+        }
+    } else {
+        words
+    }
+
+    for (word in latest) {
         val wordCount = wordsCountMap[word] ?: 0
         wordsCountMap[word] = wordCount + 1
     }
