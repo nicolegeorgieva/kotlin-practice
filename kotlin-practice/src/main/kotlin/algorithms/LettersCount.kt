@@ -6,15 +6,20 @@ fun main() {
     println("truikk".countLetters())
 }
 
-// aabcb -> Map(Pair(a, 2), Pair(b, 2), Pair(c, 1))
+// aaabcb -> Map(Pair(a, 3), Pair(b, 2), Pair(c, 1))
 private fun String.countLetters(): Map<Char, Int> {
-    var res = mutableMapOf<Char, Int>()
+    val res = mutableMapOf<Char, Int>()
 
-    val uniqueChars = this.toSet().toList() // a, b, c
+    for (i in this.indices) {
+        val char = this[i]
 
-    for (i in uniqueChars.indices) {
-        val count = this.filter { it == uniqueChars[i] }.length
-        res.put(uniqueChars[i], count)
+        if (res.contains(char)) {
+            val currentCount = res[char] ?: 1
+            res[char] = currentCount + 1
+            continue
+        }
+
+        res[char] = 1
     }
 
     return res
