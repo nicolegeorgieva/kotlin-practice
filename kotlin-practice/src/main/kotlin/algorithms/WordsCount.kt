@@ -36,7 +36,6 @@ data class SeoInfo(
 private fun String.wordsCountWithDensity(): Map<String, SeoInfo> {
     val wordsCountMap = this.wordsCount()
     val totalWords = wordsCountMap.size
-    println(totalWords)
 
     val resMap = wordsCountMap.map {
         Pair(
