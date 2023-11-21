@@ -2,21 +2,38 @@ package algorithms
 
 fun main() {
     val input = "hello"
+    val input2 = "leetcode"
+    val input3 = "helilotu" // hulolite
+
     println(reverseVowels(input))
+    println(reverseVowels(input2))
+    println(reverseVowels(input3))
 }
 
 /*
 Input: s = "hello"
+1, 4
 Output: "holle"
  */
 private fun reverseVowels(s: String): String {
     val input = s.lowercase()
     val vowels = listOf('a', 'e', 'i', 'o', 'u')
-    var finalString = input
+    val finalString = input.toMutableList()
+    val indicesToSwap = mutableListOf<Int>()
 
-    // TODO
+    for (i in input.indices) {
+        if (input[i] in vowels) {
+            indicesToSwap.add(i)
+        }
+    }
 
-    return finalString
+    if (indicesToSwap.isEmpty()) return input
+
+    for (j in indicesToSwap.indices) {
+        finalString.swap(indicesToSwap[j], indicesToSwap[indicesToSwap.size - 1])
+    }
+
+    return finalString.joinToString("")
 }
 
 private fun MutableList<Char>.swap(i: Int, j: Int) {
