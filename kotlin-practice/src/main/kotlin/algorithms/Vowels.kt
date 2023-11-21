@@ -13,6 +13,8 @@ fun main() {
 /*
 Input: s = "hello"
 1, 4
+"leetcode"
+1, 2, 5, 7
 Output: "holle"
  */
 private fun reverseVowels(s: String): String {
@@ -30,7 +32,7 @@ private fun reverseVowels(s: String): String {
     if (indicesToSwap.isEmpty()) return input
 
     for (j in indicesToSwap.indices) {
-        finalString.swap(indicesToSwap[j], indicesToSwap[indicesToSwap.size - 1])
+        finalString.swap(indicesToSwap[j], indicesToSwap[indicesToSwap.size - 1 - j])
     }
 
     return finalString.joinToString("")
