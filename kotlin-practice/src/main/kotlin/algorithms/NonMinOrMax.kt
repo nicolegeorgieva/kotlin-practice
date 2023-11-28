@@ -19,19 +19,7 @@ private fun findNonMinOrMax(nums: IntArray): Int {
     val uniqueNums = nums.toSet()
     if (uniqueNums.size <= 2) return -1
 
-    val max = uniqueNums.max()
-    val min = uniqueNums.min()
+    val numbers = uniqueNums.sorted()
 
-    val numbers = uniqueNums.toList()
-
-    var res = 0
-
-    for (number in numbers) {
-        if (number != max && number != min) {
-            res = number
-            break
-        }
-    }
-
-    return res
+    return numbers[1]
 }
