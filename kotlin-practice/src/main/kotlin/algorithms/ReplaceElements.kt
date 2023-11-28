@@ -18,29 +18,26 @@ Output: [-1]
 private fun replaceElements(arr: IntArray): IntArray {
     if (arr.size <= 1) return intArrayOf(-1)
 
-    var greaterNum = Int.MIN_VALUE
-    val numbers = arr
-    val endIndex = numbers.lastIndex
-    var finalArr = intArrayOf()
-
-    for (i in numbers.indices) {
-        if (i == numbers.lastIndex) {
-            finalArr += -1
+    for (i in arr.indices) {
+        if (i == arr.lastIndex) {
+            arr[i] = -1
             break
         }
 
-        for (y in i + 1..endIndex) {
-            if (numbers[y] > greaterNum) {
-                greaterNum = numbers[y]
-            }
-        }
-
-        if (greaterNum != Int.MIN_VALUE) {
-            finalArr += greaterNum
-        }
-
-        greaterNum = Int.MIN_VALUE
+        arr[i] = findMaxBetween(input = arr, i1 = i + 1)
     }
 
-    return finalArr
+    return arr
+}
+
+private fun findMaxBetween(input: IntArray, i1: Int): Int {
+    var maxNum = Int.MIN_VALUE
+
+    for (y in i1..input.lastIndex) {
+        if (input[y] > maxNum) {
+            maxNum = input[y]
+        }
+    }
+
+    return maxNum
 }
