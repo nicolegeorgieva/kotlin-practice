@@ -1,28 +1,24 @@
 package algorithms
 
 fun main() {
-    println(isUgly(1))
-    println(isUgly(6))
-    println(isUgly(8))
-    println(isUgly(14))
+    println(isUgly(1)) // true
+    println(isUgly(6)) // true
+    println(isUgly(8)) // true
+    println(isUgly(14)) // false
 }
 
 // 8 -> true
 private fun isUgly(n: Int): Boolean {
+    if (n <= 0) return false
+
+    var num = n
     val primeFactors = listOf(2, 3, 5)
 
-    if (n == 1) return true
-
-    var primeNum = 0
-    if (n % 2 == 0) { // 8
-        do {
-            primeNum = n / 2
-        } while ((primeNum / 2) % 2 != 0)
+    for (factor in primeFactors) {
+        while (num % factor == 0) {
+            num /= factor
+        }
     }
 
-    if (primeNum != 0 && primeNum !in primeFactors) {
-        return false
-    }
-
-    return true
+    return num == 1
 }
