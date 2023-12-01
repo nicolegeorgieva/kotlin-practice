@@ -1,4 +1,4 @@
-package algorithms
+package algorithms.old
 
 import kotlinx.coroutines.delay
 import java.util.*

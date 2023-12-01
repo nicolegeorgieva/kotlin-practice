@@ -1,4 +1,4 @@
-package algorithms
+package algorithms.old
 
 fun main() {
     val input = "hello"

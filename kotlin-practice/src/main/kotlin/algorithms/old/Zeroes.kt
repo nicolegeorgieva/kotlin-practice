@@ -1,4 +1,4 @@
-package algorithms
+package algorithms.old
 
 fun main() {
     val nums = intArrayOf(0, 1, 2, 3, 0)

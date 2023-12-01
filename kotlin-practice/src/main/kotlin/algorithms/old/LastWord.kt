@@ -1,4 +1,4 @@
-package algorithms
+package algorithms.old
 
 fun main() {
     println(lengthOfLastWord("Hello World   "))

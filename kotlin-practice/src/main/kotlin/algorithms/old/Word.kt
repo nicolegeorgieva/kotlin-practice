@@ -1,4 +1,4 @@
-package algorithms
+package algorithms.old
 
 fun main() {
     val input = listOf("N>I", "I>C", "C>O", "O>L", "L>E").shuffled()

@@ -1,4 +1,4 @@
-package algorithms
+package algorithms.old
 
 fun main() {
     val text = "Hi, I'm Nicole. I've been diving deep into Software Development for about 2 years, particularly into " +

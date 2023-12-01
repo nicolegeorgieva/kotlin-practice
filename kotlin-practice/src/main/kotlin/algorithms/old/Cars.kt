@@ -1,4 +1,4 @@
-package algorithms
+package algorithms.old
 
 fun main() {
     val people = intArrayOf(3, 2, 6)

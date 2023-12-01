@@ -1,4 +1,4 @@
-package algorithms
+package algorithms.old
 
 fun main() {
     val candies = intArrayOf(2, 3, 5, 1, 3)

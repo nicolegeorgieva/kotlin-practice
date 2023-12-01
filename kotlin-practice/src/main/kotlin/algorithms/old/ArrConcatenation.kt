@@ -1,4 +1,4 @@
-package algorithms
+package algorithms.old
 
 fun main() {
     val arr = intArrayOf(1, 2, 1)
