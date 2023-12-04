@@ -32,12 +32,11 @@ private fun parseInput(input: String): List<String> {
 
 // "Game 1: 4 blue, 16 green, 2 red,  5 red, 11 blue, 16 green,  9 green, 11 blue,  10 blue, 6 green, 4 red",
 private fun parseLineToSets(game: String): List<String> {
-    val splitted = game.split(";").drop(1)
-    val firstSet = splitted[0].split(":").toMutableList()
+    val gamePlusSets = game.split(":")
+    val sets = gamePlusSets.drop(1).toString().trim().split(";")
 
-    firstSet.drop(1)
-
-    return firstSet + splitted
+    return sets
 }
+
 
 
