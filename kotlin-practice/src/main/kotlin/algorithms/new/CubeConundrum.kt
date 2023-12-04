@@ -7,7 +7,8 @@ fun main() {
     val gameList = parseInput(input)
 
     //[Game 1: 4 blue, 16 green, 2 red,  5 red, 11 blue, 16 green,  9 green, 11 blue,  10 blue, 6 green, 4 red]
-    println(parseLineToSets(gameList[0]))
+
+    println(parseGameId("Game 15: 4 blue, 16 green, 2 red,  5 red, 11 blue, 16 green,  9 green, 11 blue,  10 blue, 6 green, 4 red"))
 }
 
 val bag = mapOf(
@@ -17,6 +18,11 @@ val bag = mapOf(
 )
 
 val sum = bag.values.sum()
+
+data class Game(
+    val id: Int,
+    val sets: List<Set>
+)
 
 data class Set(
     val redCubesCount: Int,
@@ -30,13 +36,18 @@ private fun parseInput(input: String): List<String> {
     return input.split("\n")
 }
 
-// "Game 1: 4 blue, 16 green, 2 red,  5 red, 11 blue, 16 green,  9 green, 11 blue,  10 blue, 6 green, 4 red",
-private fun parseLineToSets(game: String): List<String> {
-    val gamePlusSets = game.split(":")
-    val sets = gamePlusSets.drop(1).toString().trim().split(";")
-
-    return sets
+// "Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red",
+private fun parseGame(line: String): Game {
+    TODO()
 }
 
+// Game 15
+private fun parseGameId(line: String): Int {
+    val gameTitleList = line.split(":").first().split(" ")
+    return gameTitleList[1].toInt()
+}
 
+private fun parseSets(line: String): List<Set> {
+    TODO()
+}
 
