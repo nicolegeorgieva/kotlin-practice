@@ -42,7 +42,10 @@ private fun parseAsGame(line: String): Game {
 
 // Game 15
 private fun parseGameId(line: String): Int {
-    val gameTitleList = line.split(":").first().split(" ")
+    val gameTitleList = line
+        .split(":")
+        .first()
+        .split(" ")
     return gameTitleList[1].toInt()
 }
 
@@ -50,15 +53,10 @@ private fun parseGameId(line: String): Int {
 private fun parseSets(line: String): List<Set> {
     val lineWithoutTitle = line.split(":").last()
     val sets = lineWithoutTitle.split(";")
-    var setList = mutableListOf<Set>()
 
-    // 4 blue, 16 green, 2 red
-    for (i in sets.indices) {
-        val generatedSet = parseStringToSet(sets[i])
-        setList.add(generatedSet)
+    return sets.map {
+        parseStringToSet(it)
     }
-
-    return setList
 }
 
 // 4 blue, 16 green, 2 red
@@ -91,12 +89,13 @@ private fun parseStringToSet(input: String): Set {
 
 private fun validateGame(game: Game): Boolean {
     return game.sets.all {
-        checkOneSet(it)
+        validateSet(it)
     }
 }
 
 // Set(redCubesCount=2, greenCubesCount=16, blueCubesCount=4)
-private fun checkOneSet(set: Set): Boolean {
-    return set.redCubesCount <= bag.redCubesCount && set.greenCubesCount <= bag.greenCubesCount
-            && set.blueCubesCount <= bag.blueCubesCount
+private fun validateSet(set: Set): Boolean {
+    return set.redCubesCount <= bag.redCubesCount &&
+            set.greenCubesCount <= bag.greenCubesCount &&
+            set.blueCubesCount <= bag.blueCubesCount
 }
