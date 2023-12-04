@@ -4,8 +4,10 @@ import java.io.File
 
 fun main() {
     val input = File("cubes.txt").readText()
+    val sets =
+        parseSets("Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red")
 
-    println(validGamesSum(input))
+    println(getFewestValidGameCubes(sets))
 }
 
 val bag = Set(
@@ -30,6 +32,21 @@ private fun validGamesSum(input: String): Int {
         .map(::parseAsGame)
         .filter(::validateGame)
         .sumOf { it.id }
+}
+
+// Set(blue=2, red=3, red=1), Set(green=2, blue=3; green=4)
+private fun getFewestValidGameCubes(gameSets: List<Set>): Set {
+    val redCount = gameSets.maxOf {
+        it.redCubesCount
+    }
+    val blueCount = gameSets.maxOf {
+        it.blueCubesCount
+    }
+    val greenCount = gameSets.maxOf {
+        it.greenCubesCount
+    }
+
+    return Set(redCubesCount = redCount, greenCubesCount = greenCount, blueCubesCount = blueCount)
 }
 
 // "Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red"
