@@ -4,62 +4,81 @@ import java.io.File
 
 fun main() {
     val input = File("day1.txt").readText()
-    val input2 = File("example.txt").readText()
-    val input3 = File("new.txt").readText()
+    val input2 = File("new.txt").readText()
 
-    println(sumOfCalibrationValues(input))
-    println(sumOfCalibrationValues(input2))
-    println(sumOfCalibrationValues(input3))
+    println(finalSum("www3two"))
+    println(finalSum(input))
+    println(finalSum(input2))
 }
 
-/*
-two1nine
-29
- */
-private fun sumOfCalibrationValues(input: String): Int {
-    val numbers = mapOf(
-        Pair("one", 1),
-        Pair("two", 2),
-        Pair("three", 3),
-        Pair("four", 4),
-        Pair("five", 5),
-        Pair("six", 6),
-        Pair("seven", 7),
-        Pair("eight", 8),
-        Pair("nine", 9)
-    )
+val numbers = mapOf(
+    Pair("one", 1),
+    Pair("two", 2),
+    Pair("three", 3),
+    Pair("four", 4),
+    Pair("five", 5),
+    Pair("six", 6),
+    Pair("seven", 7),
+    Pair("eight", 8),
+    Pair("nine", 9)
+)
 
-    var sum = 0
+val finalNums = numbers + numbers.map {
+    val newKey = it.key.reversed()
+    Pair(newKey, it.value)
+}
 
-    val words = input.split("\n")
-    val validWords = mutableListOf<Int>()
+private fun finalSum(input: String): Int {
+    val words = getWords(input)
 
-    for (i in words.indices) {
-        var input = ""
-        var currentNum = ""
+    val res = words.map {
+        wordToTwoDigitNumber(it)
+    }.sum()
 
-        for (y in words[i].indices) {
-            // 0 -> two1nine -> t
-            val text = words[i][y]
+    return res
+}
 
-            if (text.isDigit()) {
-                currentNum += text
-                continue
-            }
+private fun wordToTwoDigitNumber(word: String): Int {
+    val first = extractFirstDigit(word) ?: throw Exception("Error!")
+    val second = extractFirstDigit(word.reversed()) ?: first
 
-            if (input in numbers.keys) {
-                currentNum += numbers[currentNum]
-                input = ""
-                continue
-            }
+    return "$first$second".toInt()
+}
 
-            input += text
+private fun getWords(input: String): List<String> {
+    return input.split("\n")
+}
 
-            if (i == words.size - 1) {
-                validWords.add("${currentNum.first()}${currentNum.last()}".toInt())
-            }
+private fun extractFirstDigit(word: String): Int? {
+    var accumulated = ""
+    var digit: Int? = null
+
+    for (char in word) {
+        if (char.isDigit()) {
+            digit = char.digitToInt()
+            break
+        }
+
+        accumulated += char
+
+        val number = containsTextDigit(accumulated)
+        if (number != null) {
+            digit = number
+            break
         }
     }
 
-    return validWords.sum()
+    return digit
+}
+
+// "wwwone" -> "one"
+// "www" -> null
+private fun containsTextDigit(accumulated: String): Int? {
+    for (key in finalNums.keys) {
+        if (key in accumulated) {
+            return finalNums[key]
+        }
+    }
+
+    return null
 }
