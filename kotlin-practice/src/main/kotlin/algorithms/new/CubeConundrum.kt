@@ -10,7 +10,8 @@ fun main() {
 
 //    println(parseGameId("Game 15: 4 blue, 16 green, 2 red,  5 red, 11 blue, 16 green,  9 green, 11 blue,  10 blue, 6 green, 4 red"))
 //    println(parseStringToSet("4 blue, 16 green, 2 red"))
-    println(parseSets("Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red"))
+//    println(parseSets("Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red"))
+    println(parseGame("Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red"))
 }
 
 val bag = mapOf(
@@ -40,7 +41,10 @@ private fun parseInput(input: String): List<String> {
 
 // "Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red"
 private fun parseGame(line: String): Game {
-    TODO()
+    val gameId = parseGameId(line)
+    val gameSets = parseSets(line)
+
+    return Game(id = gameId, sets = gameSets)
 }
 
 // Game 15
