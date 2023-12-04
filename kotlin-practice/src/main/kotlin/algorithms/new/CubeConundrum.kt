@@ -100,4 +100,3 @@ private fun checkOneSet(set: Set): Boolean {
     return set.redCubesCount <= bag.redCubesCount && set.greenCubesCount <= bag.greenCubesCount
             && set.blueCubesCount <= bag.blueCubesCount
 }
-
