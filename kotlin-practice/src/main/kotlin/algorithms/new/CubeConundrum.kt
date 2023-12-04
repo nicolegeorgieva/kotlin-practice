@@ -8,7 +8,8 @@ fun main() {
 
     //[Game 1: 4 blue, 16 green, 2 red,  5 red, 11 blue, 16 green,  9 green, 11 blue,  10 blue, 6 green, 4 red]
 
-    println(parseGameId("Game 15: 4 blue, 16 green, 2 red,  5 red, 11 blue, 16 green,  9 green, 11 blue,  10 blue, 6 green, 4 red"))
+//    println(parseGameId("Game 15: 4 blue, 16 green, 2 red,  5 red, 11 blue, 16 green,  9 green, 11 blue,  10 blue, 6 green, 4 red"))
+    println(parseStringToSet("4 blue, 16 green, 2 red"))
 }
 
 val bag = mapOf(
@@ -30,13 +31,13 @@ data class Set(
     val blueCubesCount: Int
 )
 
-// "Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red",
+// "Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red"
 // "Game 2: ..."
 private fun parseInput(input: String): List<String> {
     return input.split("\n")
 }
 
-// "Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red",
+// "Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red"
 private fun parseGame(line: String): Game {
     TODO()
 }
@@ -47,7 +48,45 @@ private fun parseGameId(line: String): Int {
     return gameTitleList[1].toInt()
 }
 
+// "Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red"
 private fun parseSets(line: String): List<Set> {
+    val lineWithoutTitle = line.split(":").last()
+    val sets = lineWithoutTitle.split(";")
+    var setList = mutableListOf<Set>()
+
+    // 4 blue, 16 green, 2 red
+    for (i in sets.indices) {
+
+    }
+
     TODO()
+}
+
+// 4 blue, 16 green, 2 red
+private fun parseStringToSet(input: String): Set {
+    var red = 0
+    var green = 0
+    var blue = 0
+
+    val inputList = input.split(",")
+
+    // 4 blue
+    for (i in inputList.indices) {
+        val current = inputList[i].filter {
+            it != ','
+        }.trim().split(" ")
+
+        when (current[1]) {
+            "red" -> red += current[0].toInt()
+            "green" -> green += current[0].toInt()
+            "blue" -> blue += current[0].toInt()
+        }
+    }
+
+    return Set(
+        redCubesCount = red,
+        greenCubesCount = green,
+        blueCubesCount = blue
+    )
 }
 
