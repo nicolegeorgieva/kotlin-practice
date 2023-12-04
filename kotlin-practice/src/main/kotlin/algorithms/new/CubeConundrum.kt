@@ -7,8 +7,7 @@ fun main() {
     val sets =
         parseSets("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green")
 
-    val set = getFewestValidGameCubes(sets)
-    println(powerOfFewestValidGameCubes(set))
+    println(sumOfGamePowers(input))
 }
 
 val bag = Set(
@@ -35,21 +34,29 @@ private fun validGamesSum(input: String): Int {
         .sumOf { it.id }
 }
 
+private fun sumOfGamePowers(input: String): Int {
+    val gamesList = input.lines()
+        .map(::parseAsGame)
+
+    var sum = 0
+
+    for (game in gamesList) {
+        val set = getFewestValidGameCubes(game.sets)
+        sum += powerOfFewestValidGameCubes(set)
+    }
+
+    return sum
+}
+
 private fun powerOfFewestValidGameCubes(set: Set): Int {
     return set.redCubesCount * set.blueCubesCount * set.greenCubesCount
 }
 
 // Set(blue=2, red=3, red=1), Set(green=2, blue=3; green=4)
 private fun getFewestValidGameCubes(gameSets: List<Set>): Set {
-    val redCount = gameSets.maxOf {
-        it.redCubesCount
-    }
-    val blueCount = gameSets.maxOf {
-        it.blueCubesCount
-    }
-    val greenCount = gameSets.maxOf {
-        it.greenCubesCount
-    }
+    val redCount = gameSets.maxOf { it.redCubesCount }
+    val blueCount = gameSets.maxOf { it.blueCubesCount }
+    val greenCount = gameSets.maxOf { it.greenCubesCount }
 
     return Set(redCubesCount = redCount, greenCubesCount = greenCount, blueCubesCount = blueCount)
 }
