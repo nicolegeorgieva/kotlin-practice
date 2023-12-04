@@ -4,17 +4,8 @@ import java.io.File
 
 fun main() {
     val input = File("cubes.txt").readText()
-    val gameList = parseInput(input)
 
-    //[Game 1: 4 blue, 16 green, 2 red,  5 red, 11 blue, 16 green,  9 green, 11 blue,  10 blue, 6 green, 4 red]
-
-//    println(parseGameId("Game 15: 4 blue, 16 green, 2 red,  5 red, 11 blue, 16 green,  9 green, 11 blue,  10 blue, 6 green, 4 red"))
-//    println(parseStringToSet("4 blue, 16 green, 2 red"))
-//    println(parseSets("Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red"))
-    val game =
-        parseGame("Game 1: 4 blue, 10 green, 2 red; 5 red, 11 blue, 10 green; 9 green, 11 blue; 10 blue, 6 green, 4 red")
-//    println(checkOneSet(Set(redCubesCount = 2, greenCubesCount = 16, blueCubesCount = 4)))
-    println(checkGame(game))
+    println(validGamesSum(input))
 }
 
 val bag = Set(
@@ -34,14 +25,15 @@ data class Set(
     val blueCubesCount: Int
 )
 
-// "Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red"
-// "Game 2: ..."
-private fun parseInput(input: String): List<String> {
-    return input.split("\n")
+private fun validGamesSum(input: String): Int {
+    return input.lines()
+        .map(::parseAsGame)
+        .filter(::validateGame)
+        .sumOf { it.id }
 }
 
 // "Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red"
-private fun parseGame(line: String): Game {
+private fun parseAsGame(line: String): Game {
     val gameId = parseGameId(line)
     val gameSets = parseSets(line)
 
@@ -97,14 +89,15 @@ private fun parseStringToSet(input: String): Set {
     )
 }
 
+private fun validateGame(game: Game): Boolean {
+    return game.sets.all {
+        checkOneSet(it)
+    }
+}
+
 // Set(redCubesCount=2, greenCubesCount=16, blueCubesCount=4)
 private fun checkOneSet(set: Set): Boolean {
     return set.redCubesCount <= bag.redCubesCount && set.greenCubesCount <= bag.greenCubesCount
             && set.blueCubesCount <= bag.blueCubesCount
 }
 
-private fun checkGame(game: Game): Boolean {
-    return game.sets.all {
-        checkOneSet(it)
-    }
-}
