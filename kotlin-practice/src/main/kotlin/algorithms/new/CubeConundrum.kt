@@ -15,13 +15,7 @@ fun main() {
     println(checkOneSet(Set(redCubesCount = 2, greenCubesCount = 16, blueCubesCount = 4)))
 }
 
-val bag = mapOf(
-    "red" to 12,
-    "green" to 13,
-    "blue" to 14
-)
-
-val sum = bag.values.sum()
+val bag = Set(redCubesCount = 12, greenCubesCount = 13, blueCubesCount = 14)
 
 data class Game(
     val id: Int,
@@ -99,6 +93,6 @@ private fun parseStringToSet(input: String): Set {
 
 // Set(redCubesCount=2, greenCubesCount=16, blueCubesCount=4)
 private fun checkOneSet(set: Set): Boolean {
-    return set.redCubesCount <= bag["red"]!! && set.greenCubesCount <= bag["green"]!!
-            && set.blueCubesCount <= bag["blue"]!!
+    return set.redCubesCount <= bag.redCubesCount && set.greenCubesCount <= bag.greenCubesCount
+            && set.blueCubesCount <= bag.blueCubesCount
 }
