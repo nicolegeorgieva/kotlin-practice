@@ -6,7 +6,7 @@ fun main() {
     val input = File("gearRatios.txt").readText()
     val lines = input.lines()
 
-    println(getSymbolsCoordinates(lines))
+
 }
 
 /*
@@ -20,24 +20,14 @@ data class Coordinates(
     val y: Int
 )
 
-// "...317..........214"
-// "...*.........4....5"
-private fun getSymbolsCoordinates(input: List<String>): List<Coordinates> {
-    val symbolsCoordinates = mutableListOf<Coordinates>()
-
-    for (i in input.indices) {
-        val line = input[i]
-
-        for (j in line.indices) {
-            val char = line[j]
-            if (char.isASymbol()) {
-                symbolsCoordinates += Coordinates(x = j, y = i)
-            }
-        }
-    }
-
-    return symbolsCoordinates
+// "...317..........214......"
+// "..@.........568...#......"
+// x = 3, y = 0 (always for 1st char)
+private fun foundAdjacentSymbols(input: List<String>, coordinates: Coordinates): Boolean {
+    val x = coordinates.x
+    val y = coordinates.y
 }
+
 
 private fun Char.isASymbol(): Boolean {
     if (this == '.') return false
