@@ -6,7 +6,7 @@ fun main() {
     val input = File("gearRatios.txt").readText()
     val lines = input.lines()
 
-
+    println(foundAdjacentSymbols(lines, Coordinates(1, 11)))
 }
 
 /*
@@ -26,6 +26,22 @@ data class Coordinates(
 private fun foundAdjacentSymbols(input: List<String>, coordinates: Coordinates): Boolean {
     val x = coordinates.x
     val y = coordinates.y
+
+    for (i in input.indices) {
+        val line = input[i]
+
+        for (j in line.indices) {
+            val char = line[j]
+
+            if (char.isASymbol()) {
+                if (x == j - 1 || x == j + 1 || y == i - 1 || y == i + 1) {
+                    return true
+                }
+            }
+        }
+    }
+
+    return false
 }
 
 
