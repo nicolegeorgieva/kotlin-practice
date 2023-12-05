@@ -4,6 +4,9 @@ import java.io.File
 
 fun main() {
     val input = File("gearRatios.txt").readText()
+    val lines = input.lines()
+
+    println(getSymbolsCoordinates(lines))
 }
 
 /*
@@ -12,32 +15,28 @@ to match criteria for part number:
 2. A number which is next || same index to a symbol (previous || same || next)
  */
 
-// "617*......"
-// A number which is directly next to a symbol (left || right)
-private fun partNumbersFromDirectlyNextSymbols(input: String): List<Int> {
-    var latestChar = ' '
-    var number = ""
-    val partNumbersList = mutableListOf<Int>()
+data class Coordinates(
+    val x: Int,
+    val y: Int
+)
+
+// "...317..........214"
+// "...*.........4....5"
+private fun getSymbolsCoordinates(input: List<String>): List<Coordinates> {
+    val symbolsCoordinates = mutableListOf<Coordinates>()
 
     for (i in input.indices) {
-        latestChar = input[i]
+        val line = input[i]
 
-        if (latestChar.isANumber()) {
-            number += latestChar
-        } else if (latestChar.isASymbol()) {
-            if (input[i - 1].isANumber()) {
-                partNumbersList += number.toInt()
+        for (j in line.indices) {
+            val char = line[j]
+            if (char.isASymbol()) {
+                symbolsCoordinates += Coordinates(x = j, y = i)
             }
-
-            if (input[i + 1].isANumber()) {
-                number = ""
-            }
-        } else {
-            continue
         }
     }
 
-    return partNumbersList
+    return symbolsCoordinates
 }
 
 private fun Char.isASymbol(): Boolean {
